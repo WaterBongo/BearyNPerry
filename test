@@ -1,0 +1,57 @@
+import sqlite3
+from hashlib import sha256
+
+# Connect to the SQLite database (or create a new one if it doesn't exist)
+conn = sqlite3.connect('tutoring.db')
+cursor = conn.cursor()
+
+# Create a table to store user accounts
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE,
+        password TEXT,
+        bio TEXT,
+        zoom TEXT,
+        subject TEXT
+    )
+''')
+
+conn.commit()
+
+def register_user(username, password, bio):
+    # Hash the password before storing it in the database
+    hashed_password = sha256(password.encode()).hexdigest()
+    
+    # Insert the user's information into the 'users' table
+    cursor.execute('INSERT OR IGNORE INTO users (username, password, bio) VALUES (?, ?, ?)', (username, hashed_password, bio))
+    conn.commit()
+
+def login_user(username, password):
+    # Hash the provided password for comparison with the stored hashed password
+    hashed_password = sha256(password.encode()).hexdigest()
+    bio = 'na'
+
+    # Check if the username and hashed password match a record in the 'users' table
+    cursor.execute('SELECT * FROM users WHERE username=? AND password=?', (username, hashed_password))
+    user = cursor.fetchone()
+    cursor.execute('SELECT bio FROM users WHERE bio=?', (bio,))
+
+
+    if user:
+        print(f"Welcome, {username}!")
+        print(f"{bio}")
+    else:
+        print("Invalid username or password")
+
+# Example: Register a new user
+register_user('john_doe', 'password123', 'hi')
+# register_user('perry', 'haha')
+# register_user('berry', 'hehe')
+
+# Example: Login
+login_user('john_doe', 'password123')
+
+# Close the database connection when sqlite3 your_database_name.dbdone
+cursor.close()
+conn.close()
