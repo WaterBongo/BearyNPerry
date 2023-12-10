@@ -1,5 +1,7 @@
 # Berry n Perry 🌟️
 
+![Logo][logo.png]
+
 1st Place General theme :)
 
 Helping the less fortunate.
