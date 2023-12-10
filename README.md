@@ -2,7 +2,7 @@
 
 ![Logo][logo.png]
 
-1st Place General theme :)
+1st Place General theme :) (Code for CAuse)
 
 Helping the less fortunate.
 
