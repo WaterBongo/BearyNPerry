@@ -1,6 +1,6 @@
 # Berry n Perry 🌟️
 
-![Logo][logo.png]
+![Logo](./assets/logo.png)
 
 1st Place General theme :) (Code for CAuse)
 
