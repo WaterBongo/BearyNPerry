@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 frontend/pages/config.json
 frontend/assets/config.json
+frontend/assets/config.json
