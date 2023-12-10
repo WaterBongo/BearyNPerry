@@ -34,7 +34,7 @@ for val in available:
 
     oppsite_avaliable.append(tiny_url())
   else:
-    oppsite_avaliable.append(":(")
+    oppsite_avaliable.append("Busy")
     
 print(available)
 #if ❌, then create another variable with

@@ -1,5 +1,5 @@
 import streamlit as st
-import webbrowser
+import webbrowser,requests
 
 st.markdown("# Find Tutors! ❄️")
 st.sidebar.markdown("# Finder ❄️")
@@ -8,6 +8,8 @@ st.sidebar.image("./assets/logo.png", width=250)
 tab1, tab2, tab3 = st.tabs(["English", "Math", "Computer Science"])
 
 with tab1:
+   r = requests.post('http://127.0.0.1:8080/lookup',json={"subject":"English"})
+   person_json = r.json()
    col1, col2 = st.columns(2)
    with col1:
     st.header("English Volunteers")
@@ -39,6 +41,8 @@ I firmly believe that every child has the potential to excel, and it's our duty 
 
 
 with tab2:
+    r = requests.post('http://127.0.0.1:8080/lookup',json={"subject":"Math"})
+    rjson = r.json()
     col1, col2 = st.columns(2)
     with col1:
         st.header("Math Volunteers")
@@ -65,6 +69,8 @@ I believe strongly in the hidden talents every child possesses. It is my mission
 Remember, education can change lives, and together we can make a difference!
 """)
 with tab3:
+   r = requests.post('http://127.0.0.1:8080/lookup',json={"subject":"CS"})
+   rjson=r.json()
    col1, col2 = st.columns(2)
    with col1:
     st.header("Comp Sci Pro")
