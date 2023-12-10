@@ -1,7 +1,7 @@
 import streamlit as st
 import openai,json
 
-
+st.sidebar.image("./assets/logo.png", width=250)
 with open('./assets/config.json','r') as f:
     data = f.read()
     config = json.loads(data)
@@ -15,8 +15,7 @@ if "messages" not in st.session_state:
         ]
 
 
-# Create a DataFrame from the data
-# Display the chart
+
 for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])

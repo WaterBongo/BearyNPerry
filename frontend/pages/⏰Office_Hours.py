@@ -12,8 +12,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.sidebar.markdown("# Finder ❄️")
-st.sidebar.image("./assets/logo.png", width=250)
 
 # Define names for keys
 names = np.random.choice(['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Felix', 'Gina', 'Hank', 'Ivy', 'Jack'], size=10)

@@ -1,4 +1,4 @@
-import flask
+import flask,base64
 from flask import request
 ip = "127.0.0.1:8080/"
 
@@ -55,6 +55,19 @@ def search(subject):
         if i["subject"] == subject:
             return i
 
-a = search("English")
+
+@app.route("/addpeople",methods=["POST"])
+def add_teacher():
+    req_json = request.json
+    #convert json to dict
+    name = req_json['name']
+    #offuscate the bio with b64
+    bio = req_json['Bio']
+    byte_data = bio.encode('utf-8')
+    encoded_data = base64.b64encode(byte_data)
+    req_json['Bio'] = encoded_data
+    user_db[name]=req_json
+    print(user_db)
+    return "hehe"
 
 app.run('0.0.0.0',port=8080)
